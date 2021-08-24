@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header />
     <main class="main-container">
       <div class="main-content container mx-auto">
         <router-view />
@@ -8,10 +9,14 @@
   </div>
 </template>
 <script>
+  import Header from "@/views/header.vue";
 export default {
   data() {
     return {};
   },
+  components: {
+    Header,
+  }
 };
 </script>
 
