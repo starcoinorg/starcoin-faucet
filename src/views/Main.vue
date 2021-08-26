@@ -4,16 +4,16 @@
       <div class="row" style="margin-bottom: 16px;">
         <div class="col-lg-12">
           <h1 style="text-align: center;">
-            <i class="fa fa-bath" aria-hidden="true" /> {{ network }} Authenticated {{ $t('stc-faucet') }}
+            <i class="fa fa-bath" aria-hidden="true" /> {{ network }} {{ $t('stc-authenticated') }} {{ $t('stc-faucet') }}
           </h1>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="input-group">
-            <input id="url" name="url" type="text" class="form-control" placeholder="Social network URL containing your Starcoin address...">
+            <input id="url" name="url" type="text" class="form-control" :placeholder="$t('stc-social-network-URL')">
             <span class="input-group-btn">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Give me 3 STC
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $t('stc-give-me') }} 3 STC
                 <!--<i class="fa fa-caret-down" aria-hidden="true" />-->
               </button>
               <!--<ul class="dropdown-menu dropdown-menu-right">-->
@@ -27,18 +27,17 @@
       </div>
       <div class="row" style="margin-top: 32px;">
         <div class="col-lg-12">
-          <h3>How does this work?</h3>
-          <p>This STC faucet is running on the {{ network }} network. To prevent malicious actors from exhausting all available funds or accumulating enough STC to mount long running spam attacks, requests are tied to common 3rd party social network accounts. Anyone having a Twitter account may request funds within the permitted limits.</p>
+          <h3>{{ $t('stc-how-work') }}</h3>
+          <p>{{ $t('stc-text-01') }}{{ network }} {{ $t('stc-text-02') }}</p>
           <dl class="dl-horizontal">
             <dt style="width: auto; margin-left: 40px;">
               <i class="fa fa-twitter" aria-hidden="true" style="font-size: 36px;" />
             </dt>
             <dd style="margin-left: 88px; margin-bottom: 10px;">
-              To request funds via Twitter, make a <a :href="getTwitterUrl()" target="_about:blank">tweet</a> with your Starcoin address pasted into the contents (surrounding text doesn't matter).<br>Copy-paste the <a href="https://support.twitter.com/articles/80586" target="_about:blank">tweets URL</a> into the above input box and fire away!
+              {{ $t('stc-text-03') }}<a :href="getTwitterUrl()" target="_about:blank">tweet</a> {{ $t('stc-text-04') }}<br>{{ $t('stc-text-05') }}<a href="https://support.twitter.com/articles/80586" target="_about:blank">{{ $t('stc-tweets-URL') }}</a> {{ $t('stc-text-06') }}
             </dd>
           </dl>
-          <p>You can track the current pending requests below the input field to see how much you have to wait until your turn comes.</p>
-          <!--<em>The faucet is running invisible reCaptcha protection against bots.</em>-->
+          <p>{{ $t('stc-text-07') }}</p>
         </div>
       </div>
     </div>
