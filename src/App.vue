@@ -24,8 +24,11 @@ export default {
 #app {
   background-color: #fff;
   .main-container {
+    display: flex;
+    align-items: center;
+
     .main-content {
-      min-height: 800px;
+      // min-height: 800px;
     }
   }
 }

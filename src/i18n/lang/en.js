@@ -12,5 +12,6 @@ export default {
   'stc-tweets-URL': 'tweets URL',
   'stc-text-06': 'into the above input box and fire away!',
   'stc-text-07': 'You can track the current pending requests below the input field to see how much you have to wait until your turn comes.',
-
+  'stc-create-success':'success',
+  'stc-create-bad':'bad request',
 };
