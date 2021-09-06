@@ -59,10 +59,13 @@
                   <td v-if="t.timer > 0">
                     <div>
                       <td>
-                        <a target="_blank" :href="`${domain}/${network}/address/${t.address}`">
-                          <pre style="margin: 0">{{
-                          t.address || ""
-                          }}</pre>
+                        <a
+                          target="_blank"
+                          :href="`${domain}/${network.toLowerCase()}/address/${
+                            t.address
+                          }`"
+                        >
+                          <pre style="margin: 0">{{ t.address || "" }}</pre>
                         </a>
                       </td>
                       <td
@@ -178,7 +181,7 @@ export default {
       list: [{ transfered_txn: null, timer: 0 }],
       timer: 30,
       url: "",
-      domain: "https://stcscan.io"
+      domain: "https://stcscan.io",
     };
   },
   mounted() {
@@ -191,9 +194,9 @@ export default {
       axios
         .post(
           createUrl +
-            `?network=${
-              this.$route.params["network"]
-            }&url=${encodeURI(this.url)}`
+            `?network=${this.$route.params["network"]}&url=${encodeURI(
+              this.url
+            )}`
         )
         .then((resp) => {
           const { status, detail } = resp.data;
@@ -213,20 +216,20 @@ export default {
         .finally((err, resp) => {});
     },
     getRecently() {
-      axios.get(getRecentlyUrl + `?network=${
-              this.$route.params["network"]
-            }`).then((resp) => {
-        // console.log(resp.data);
-        const data = resp.data;
-        this.list = data;
-        this.list.map((item, index) => {
-          Vue.set(item, "timer", this.timer);
-          // console.log(this.list, item);
-          const id = setInterval(() => {
-            item.timer > 0 ? item.timer-- : clearInterval(id);
-          }, 1000);
+      axios
+        .get(getRecentlyUrl + `?network=${this.$route.params["network"]}`)
+        .then((resp) => {
+          // console.log(resp.data);
+          const data = resp.data;
+          this.list = data;
+          this.list.map((item, index) => {
+            Vue.set(item, "timer", this.timer);
+            // console.log(this.list, item);
+            const id = setInterval(() => {
+              item.timer > 0 ? item.timer-- : clearInterval(id);
+            }, 1000);
+          });
         });
-      });
     },
     getTwitterUrl() {
       return `https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%200x0000000000000000000000000000000000000000%20on%20the%20%23${this.network}%20%23STC%20test%20network.`;
