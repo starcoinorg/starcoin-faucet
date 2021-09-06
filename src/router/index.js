@@ -9,7 +9,8 @@ const routes = [
     path: '/:network',
     name: 'Main',
     component: MainView,
-  }
+  },
+  { path: '*', redirect: '/barnard' }
 ];
 
 const router = new VueRouter({
