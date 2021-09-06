@@ -151,10 +151,7 @@ const apiDomain =
   process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN || "http://localhost:8000";
 const createUrl = `${apiDomain}/create`;
 const getRecentlyUrl = `${apiDomain}/recently`;
-console.log(
-  "process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN",
-  process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN
-);
+
 // a few seconds ago 、 funded
 const networkDefault = "barnard";
 const networkMap = {
@@ -171,7 +168,6 @@ const networkMap = {
 
 export default {
   data() {
-    console.log(this.$route.params);
     const pNetwork = this.$route.params["network"] || networkDefault;
 
     return {
@@ -190,7 +186,12 @@ export default {
   methods: {
     getCoin() {
       axios
-        .post(createUrl + `?platform=twitter&url=${encodeURI(this.url)}`)
+        .post(
+          createUrl +
+            `?network=${
+              this.$route.params["network"]
+            }&platform=twitter&url=${encodeURI(this.url)}`
+        )
         .then((resp) => {
           const { status, detail } = resp.data;
           if (status === 0) {
