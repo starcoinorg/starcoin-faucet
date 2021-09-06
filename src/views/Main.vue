@@ -163,9 +163,9 @@ const networkMap = {
   barnard: {
     text: "Barnard",
   },
-  halley: {
-    text: "Halley",
-  },
+  // halley: {
+  //   text: "Halley",
+  // },
   proxima: {
     text: "Proxima",
   },
