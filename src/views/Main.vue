@@ -1,10 +1,11 @@
 <template>
   <div class="vertical-center">
     <div class="container">
-      <div class="row" style="margin-bottom: 16px;">
+      <div class="row" style="margin-bottom: 16px">
         <div class="col-lg-12">
-          <h1 style="text-align: center;">
-            <i class="fa fa-bath" aria-hidden="true" /> {{ network }} {{ $t('stc-authenticated') }} {{ $t('stc-faucet') }}
+          <h1 style="text-align: center">
+            <i class="fa fa-bath" aria-hidden="true" /> {{ network }}
+            {{ $t("stc-authenticated") }} {{ $t("stc-faucet") }}
           </h1>
         </div>
       </div>
@@ -27,7 +28,8 @@
                 aria-haspopup="true"
                 aria-expanded="false"
                 @click="getCoin"
-              >{{ $t('stc-give-me') }} 3 STC
+              >
+                {{ $t("stc-give-me") }} 3 STC
                 <!--<i class="fa fa-caret-down" aria-hidden="true" />-->
               </button>
               <!--<ul class="dropdown-menu dropdown-menu-right">-->
@@ -40,19 +42,41 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top: 32px;">
+    <div class="row" style="margin-top: 32px">
       <div class="col-lg-6" style="">
         <div class="panel panel-small panel-default" style="">
-          <div class="panel-body" style="padding: 0; overflow: auto; max-height: 300px;">
-            <table id="requests" class="table table-condensed" style="margin: 0px;">
+          <div
+            class="panel-body"
+            style="padding: 0; overflow: auto; max-height: 300px"
+          >
+            <table
+              id="requests"
+              class="table table-condensed"
+              style="margin: 0px"
+            >
               <tbody>
-                <tr v-for="(t,index) in list" :key="index">
+                <tr v-for="(t, index) in list" :key="index">
                   <td v-if="t.timer > 0">
                     <div>
-                      <td><pre style="margin: 0">{{ t.transfered_txn || '' }}</pre></td>  
-                      <td style="width: 100%; text-align: center; vertical-align: middle;">
-                        &nbsp;&nbsp;&nbsp;funded&nbsp;&nbsp;&nbsp; 
-                        <Progress :percent="99" status="active" hide-info style="padding: 0 5px" />
+                      <td>
+                        <pre style="margin: 0">{{
+                          t.transfered_txn || ""
+                        }}</pre>
+                      </td>
+                      <td
+                        style="
+                          width: 100%;
+                          text-align: center;
+                          vertical-align: middle;
+                        "
+                      >
+                        &nbsp;&nbsp;&nbsp;funded&nbsp;&nbsp;&nbsp;
+                        <Progress
+                          :percent="99"
+                          status="active"
+                          hide-info
+                          style="padding: 0 5px"
+                        />
                       </td>
                     </div>
                   </td>
@@ -90,57 +114,72 @@
         </div>
       </div>
     </div>
-    <div class="row" style="margin-top: 32px;">
+    <div class="row" style="margin-top: 32px">
       <div class="col-lg-12">
-        <h3>{{ $t('stc-how-work') }}</h3>
-        <p>{{ $t('stc-text-01') }} {{ network }} {{ $t('stc-text-02') }}</p>
+        <h3>{{ $t("stc-how-work") }}</h3>
+        <p>{{ $t("stc-text-01") }} {{ network }} {{ $t("stc-text-02") }}</p>
         <dl class="dl-horizontal">
-          <dt style="width: auto; margin-left: 40px;">
-            <i class="fa fa-twitter" aria-hidden="true" style="font-size: 36px;" />
+          <dt style="width: auto; margin-left: 40px">
+            <i
+              class="fa fa-twitter"
+              aria-hidden="true"
+              style="font-size: 36px"
+            />
           </dt>
-          <dd style="margin-left: 88px; margin-bottom: 10px;">
-            {{ $t('stc-text-03') }}<a :href="getTwitterUrl()" target="_about:blank">tweet</a> {{ $t('stc-text-04') }}<br>{{ $t('stc-text-05') }}<a href="https://support.twitter.com/articles/80586" target="_about:blank">{{ $t('stc-tweets-URL') }}</a> {{ $t('stc-text-06') }}
+          <dd style="margin-left: 88px; margin-bottom: 10px">
+            {{ $t("stc-text-03")
+            }}<a :href="getTwitterUrl()" target="_about:blank">tweet</a>
+            {{ $t("stc-text-04") }}<br>{{ $t("stc-text-05")
+            }}<a
+              href="https://support.twitter.com/articles/80586"
+              target="_about:blank"
+            >{{ $t("stc-tweets-URL") }}</a>
+            {{ $t("stc-text-06") }}
           </dd>
         </dl>
-        <p>{{ $t('stc-text-07') }}</p>
+        <p>{{ $t("stc-text-07") }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Vue from 'vue';
+import axios from "axios";
+import Vue from "vue";
 
-const createUrl = 'http://localhost:8000/create';
-const getRecentlyUrl = 'http://localhost:8000/recently';
-
+const apiDomain =
+  process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN || "http://localhost:8000";
+const createUrl = `${apiDomain}/create`;
+const getRecentlyUrl = `${apiDomain}/recently`;
+console.log(
+  "process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN",
+  process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN
+);
 // a few seconds ago 、 funded
-const networkDefault = 'branard';
+const networkDefault = "barnard";
 const networkMap = {
-  branard: {
-    text: 'Branard'
+  barnard: {
+    text: "Barnard",
   },
   halley: {
-    text: 'Halley'
+    text: "Halley",
   },
   proxima: {
-    text: 'Proxima'
-  }
-
+    text: "Proxima",
+  },
 };
-
 
 export default {
   data() {
-    const pNetwork = this.$route.params['network'] || networkDefault;
+    console.log(this.$route.params);
+    const pNetwork = this.$route.params["network"] || networkDefault;
 
     return {
-      network: networkMap[pNetwork]['text'],
+      network: networkMap[pNetwork]["text"],
       networkMap: networkMap,
-      list: [ {"transfered_txn": null, "timer": 0 } ],
+      list: [{ transfered_txn: null, timer: 0 }],
       timer: 30,
-      url: ''
+      url: "",
     };
   },
   mounted() {
@@ -152,82 +191,77 @@ export default {
     getCoin() {
       axios
         .post(createUrl + `?platform=twitter&url=${encodeURI(this.url)}`)
-        .then(resp => {
-          const { status, detail }  = resp.data;
-          if(status === 0 ) {
-            this.url = '';
-            this.$Message.success(this.$t('stc-create-success'));
+        .then((resp) => {
+          const { status, detail } = resp.data;
+          if (status === 0) {
+            this.url = "";
+            this.$Message.success(this.$t("stc-create-success"));
           }
-        }).catch( (error) => {
+        })
+        .catch((error) => {
           console.log(error.response);
           if (error.response) {
             const { detail } = error.response.data;
-            this.url = '';
+            this.url = "";
             this.$Message.error(detail);
           }
-        }).finally((err, resp) => {
-          
-        });
+        })
+        .finally((err, resp) => {});
     },
     getRecently() {
-      axios
-        .get(getRecentlyUrl + '?platform=twitter')
-        .then(resp => {
-          // console.log(resp.data);
-          const data = resp.data;
-          this.list = data;
-          this.list.map((item, index) => {
-            Vue.set(item, 'timer', this.timer);
-            // console.log(this.list, item);
-            const id = setInterval(() => {
-              item.timer > 0 ? item.timer--: clearInterval(id);
-            }, 1000);
-          });
-
+      axios.get(getRecentlyUrl + "?platform=twitter").then((resp) => {
+        // console.log(resp.data);
+        const data = resp.data;
+        this.list = data;
+        this.list.map((item, index) => {
+          Vue.set(item, "timer", this.timer);
+          // console.log(this.list, item);
+          const id = setInterval(() => {
+            item.timer > 0 ? item.timer-- : clearInterval(id);
+          }, 1000);
         });
+      });
     },
     getTwitterUrl() {
       return `https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%200x0000000000000000000000000000000000000000%20on%20the%20%23${this.network}%20%23STC%20test%20network.`;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="less" scoped>
+.vertical-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  .vertical-center {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-  }
-
-  @media (min-width: 1200px) {
-    .container {
-      width: 1170px;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      width: 970px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container {
-      width: 750px;
-    }
-  }
+@media (min-width: 1200px) {
   .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 1170px;
   }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
 
-  .input-group .form-control {
-    min-width: 360px;
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
   }
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.input-group .form-control {
+  min-width: 360px;
+}
 </style>
