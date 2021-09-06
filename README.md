@@ -25,3 +25,14 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### history mode
+
+nginx
+```
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
+
+[history mode](https://router.vuejs.org/zh/guide/essentials/history-mode.html) 
