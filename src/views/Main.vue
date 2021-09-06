@@ -59,9 +59,11 @@
                   <td v-if="t.timer > 0">
                     <div>
                       <td>
-                        <pre style="margin: 0">{{
-                          t.transfered_txn || ""
-                        }}</pre>
+                        <a target="_blank" :href="`${domain}/${network}/address/${t.address}`">
+                          <pre style="margin: 0">{{
+                          t.address || ""
+                          }}</pre>
+                        </a>
                       </td>
                       <td
                         style="
@@ -176,6 +178,7 @@ export default {
       list: [{ transfered_txn: null, timer: 0 }],
       timer: 30,
       url: "",
+      domain: "https://stcscan.io"
     };
   },
   mounted() {
@@ -190,7 +193,7 @@ export default {
           createUrl +
             `?network=${
               this.$route.params["network"]
-            }&platform=twitter&url=${encodeURI(this.url)}`
+            }&url=${encodeURI(this.url)}`
         )
         .then((resp) => {
           const { status, detail } = resp.data;
@@ -210,7 +213,9 @@ export default {
         .finally((err, resp) => {});
     },
     getRecently() {
-      axios.get(getRecentlyUrl + "?platform=twitter").then((resp) => {
+      axios.get(getRecentlyUrl + `?network=${
+              this.$route.params["network"]
+            }`).then((resp) => {
         // console.log(resp.data);
         const data = resp.data;
         this.list = data;
