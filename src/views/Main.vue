@@ -184,11 +184,11 @@ export default {
       domain: "https://stcscan.io",
     };
   },
-  mounted() {
-    setInterval(() => {
-      this.getRecently();
-    }, 30 * 1000);
-  },
+  // mounted() {
+  //   setInterval(() => {
+  //     this.getRecently();
+  //   }, 30 * 1000);
+  // },
   methods: {
     getCoin() {
       axios
