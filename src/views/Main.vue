@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="row" style="margin-top: 32px">
-      <div class="col-lg-6" style="">
+      <div class="col-lg-6" style="width: 100%">
         <div class="panel panel-small panel-default" style="">
           <div
             class="panel-body"
@@ -232,7 +232,7 @@ export default {
         });
     },
     getTwitterUrl() {
-      return `https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%200x0000000000000000000000000000000000000000%20on%20the%20%23${this.network}%20%23STC%20test%20network.`;
+      return `https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%200x00000000000000000000000000000000%20on%20the%20%23${this.network}%20test%20network%20of%20%23StarcoinSTC.`;
     },
   },
 };
