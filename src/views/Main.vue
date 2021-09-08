@@ -194,7 +194,7 @@ export default {
         .post(
           createUrl +
             `?network=${this.$route.params["network"]}&url=${encodeURI(
-              this.url
+              this.url.trim().split("?")[0]
             )}`
         )
         .then((resp) => {
