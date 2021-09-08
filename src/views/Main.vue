@@ -150,12 +150,11 @@
 
 <script>
 import axios from "axios";
-import Vue from "vue";
 
 const apiDomain =
   process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN || "http://localhost:8000";
 const createUrl = `${apiDomain}/create`;
-const getRecentlyUrl = `${apiDomain}/recently`;
+// const getRecentlyUrl = `${apiDomain}/recently`;
 
 // a few seconds ago 、 funded
 const networkDefault = "barnard";
@@ -215,22 +214,22 @@ export default {
         })
         .finally((err, resp) => {});
     },
-    getRecently() {
-      axios
-        .get(getRecentlyUrl + `?network=${this.$route.params["network"]}`)
-        .then((resp) => {
-          // console.log(resp.data);
-          const data = resp.data;
-          this.list = data;
-          this.list.map((item, index) => {
-            Vue.set(item, "timer", this.timer);
-            // console.log(this.list, item);
-            const id = setInterval(() => {
-              item.timer > 0 ? item.timer-- : clearInterval(id);
-            }, 1000);
-          });
-        });
-    },
+    // getRecently() {
+    //   axios
+    //     .get(getRecentlyUrl + `?network=${this.$route.params["network"]}`)
+    //     .then((resp) => {
+    //       // console.log(resp.data);
+    //       const data = resp.data;
+    //       this.list = data;
+    //       this.list.map((item, index) => {
+    //         Vue.set(item, "timer", this.timer);
+    //         // console.log(this.list, item);
+    //         const id = setInterval(() => {
+    //           item.timer > 0 ? item.timer-- : clearInterval(id);
+    //         }, 1000);
+    //       });
+    //     });
+    // },
     getTwitterUrl() {
       return `https://twitter.com/intent/tweet?text=Requesting%20faucet%20funds%20into%200x00000000000000000000000000000000%20on%20the%20%23${this.network}%20test%20network%20of%20%23StarcoinSTC.`;
     },
