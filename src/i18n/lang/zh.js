@@ -12,6 +12,6 @@ export default {
   'stc-tweets-URL': 'tweets URL',
   'stc-text-06': '到上面的输入框中，然后点击获取！',
   'stc-text-07': '您可以在输入字段下方跟踪当前待处理的请求，以查看在轮到您之前需要等待多少时间。',
-  'stc-create-success': '提交成功',
+  'stc-create-success': '提交成功，请稍等几分钟后查看你的钱包余额。',
   'stc-create-bad': '请求异常',
 };
