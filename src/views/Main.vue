@@ -27,9 +27,10 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
+                :disabled="isDisabled"
                 @click="getCoin"
               >
-                {{ $t("stc-give-me") }} 3 STC
+                {{ $t("stc-give-me") }} 3 STC / 1 Day
                 <!--<i class="fa fa-caret-down" aria-hidden="true" />-->
               </button>
               <!--<ul class="dropdown-menu dropdown-menu-right">-->
@@ -156,17 +157,21 @@ const apiDomain =
 const createUrl = `${apiDomain}/create`;
 // const getRecentlyUrl = `${apiDomain}/recently`;
 
-// a few seconds ago 、 funded
 const networkDefault = "barnard";
+
+// halley and proxima will reset repeatedly, so we enable barnard only.
 const networkMap = {
   barnard: {
     text: "Barnard",
+    disabled: false,
   },
-  // halley: {
-  //   text: "Halley",
-  // },
+  halley: {
+    text: "Halley",
+    disabled: true,
+  },
   proxima: {
     text: "Proxima",
+    disabled: true,
   },
 };
 
@@ -176,12 +181,18 @@ export default {
 
     return {
       network: networkMap[pNetwork]["text"],
-      networkMap: networkMap,
+      enabled: networkMap[pNetwork]["enabled"],
       list: [{ transfered_txn: null, timer: 0 }],
       timer: 30,
       url: "",
       domain: "https://stcscan.io",
     };
+  },
+  computed: {
+    isDisabled() {
+      const pNetwork = this.$route.params["network"] || networkDefault;
+      return networkMap[pNetwork]["disabled"];
+    },
   },
   // mounted() {
   //   setInterval(() => {
