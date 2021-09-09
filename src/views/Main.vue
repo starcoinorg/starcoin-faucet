@@ -135,7 +135,8 @@
           <dd style="margin-left: 88px; margin-bottom: 10px">
             {{ $t("stc-text-03")
             }}<a :href="getTwitterUrl()" target="_about:blank">tweet</a>
-            {{ $t("stc-text-04") }}<br>{{ $t("stc-text-05")
+            {{ $t("stc-text-04") }} #StarcoinSTC<br>{{
+              $t("stc-text-05")
             }}<a
               href="https://support.twitter.com/articles/80586"
               target="_about:blank"
