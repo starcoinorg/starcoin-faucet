@@ -11,7 +11,8 @@ export default {
   'stc-text-05': 'Copy-paste the ',
   'stc-tweets-URL': 'tweets URL',
   'stc-text-06': 'into the above input box and fire away!',
-  'stc-text-07': 'You can track the current pending requests below the input field to see how much you have to wait until your turn comes.',
+  // 'stc-text-07': 'You can track the current pending requests below the input field to see how much you have to wait until your turn comes.',
+  'stc-text-07': 'The transfer time of STC is related to the number of requests and the health of the 3rd platform API. Normally, it should be completed within a few minutes. Please wait patiently.',
   'stc-create-success': 'Submit successfully. Please check your account balance a few minutes later.',
   'stc-create-bad': 'bad request',
 };
