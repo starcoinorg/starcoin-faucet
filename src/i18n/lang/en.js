@@ -7,7 +7,7 @@ export default {
   'stc-text-01': 'This STC faucet is running on the',
   'stc-text-02': ' network. To prevent malicious actors from exhausting all available funds or accumulating enough STC to mount long running spam attacks, requests are tied to common 3rd party social network accounts. Anyone having a Twitter account may request funds within the permitted limits.',
   'stc-text-03': 'To request funds via Twitter, make a ',
-  'stc-text-04': 'with your Starcoin address pasted into the contents (surrounding text doesn\'t matter), and a tag:',
+  'stc-text-04': 'with your Starcoin address (start with 0x) pasted into the contents (surrounding text doesn\'t matter), and a tag:',
   'stc-text-05': 'Copy-paste the ',
   'stc-tweets-URL': 'tweets URL',
   'stc-text-06': 'into the above input box and fire away!',

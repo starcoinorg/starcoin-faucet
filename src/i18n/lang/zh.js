@@ -7,7 +7,7 @@ export default {
   'stc-text-01': '这个 STC 水龙头在',
   'stc-text-02': '网络上运行。为了防止恶意行为者耗尽所有可用资金或积累足够的 STC 来发起长期运行的垃圾邮件攻击，请求与常见的 3rd 方社交网络帐户相关联。任何拥有 Twitter 帐户的人都可以在允许的限额内申请资金。',
   'stc-text-03': '要通过Twitter申请STC，需要发一个',
-  'stc-text-04': '，内容中包含你的Starcoin地址（周围的文字并不重要），和一个标签：',
+  'stc-text-04': '，内容中包含你的Starcoin地址（0x开头，周围的文字并不重要），和一个标签：',
   'stc-text-05': '复制黏贴 ',
   'stc-tweets-URL': 'tweets URL',
   'stc-text-06': '到上面的输入框中，然后点击获取！',
