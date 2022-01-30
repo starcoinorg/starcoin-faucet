@@ -123,8 +123,8 @@
     <div class="row" style="margin-top: 32px">
       <div class="col-lg-12">
         <h3>{{ $t("stc-how-work") }}</h3>
-        <p>{{ $t("stc-text-01") }} {{ network }} {{ $t("stc-text-02") }}</p>
-        <dl class="dl-horizontal">
+        <p>{{ $t("stc-text-01") }} {{ network }} {{ $t("stc-add-01") }}</p>
+        <!-- <dl class="dl-horizontal">
           <dt style="width: auto; margin-left: 40px">
             <i
               class="fa fa-twitter"
@@ -142,7 +142,7 @@
             >{{ $t("stc-tweets-URL") }}</a>
             {{ $t("stc-text-06") }}
           </dd>
-        </dl>
+        </dl> -->
         <p>{{ $t("stc-text-07") }}</p>
       </div>
     </div>

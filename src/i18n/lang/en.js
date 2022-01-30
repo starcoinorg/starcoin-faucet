@@ -2,7 +2,7 @@ export default {
   'stc-faucet': 'Faucet',
   'stc-authenticated': 'Authenticated',
   'stc-how-work': 'How does this work?',
-  'stc-social-network-URL': 'Social network URL containing your Starcoin address...',
+  'stc-social-network-URL': 'Your Starcoin address (start with 0x, length=34) ...',
   'stc-give-me': 'Give me',
   'stc-text-01': 'This STC faucet is running on the',
   'stc-text-02': ' network. To prevent malicious actors from exhausting all available funds or accumulating enough STC to mount long running spam attacks, requests are tied to common 3rd party social network accounts. Anyone having a Twitter account may request funds within the permitted limits.',
@@ -15,4 +15,6 @@ export default {
   'stc-text-07': 'The transfer time of STC is related to the number of requests and the health of the 3rd platform API. Normally, it should be completed within a few minutes. Please wait patiently.',
   'stc-create-success': 'Submit successfully. Please check your account balance a few minutes later.',
   'stc-create-bad': 'bad request',
+  'stc-add-01': "Network, Each address(start with 0x, length=34) can apply 3 STC once a day, if it's balance is greater than zero on the Main network.",
+
 };

@@ -2,7 +2,7 @@ export default {
   'stc-faucet': '水龙头',
   'stc-authenticated': '认证',
   'stc-how-work': '这是如何运作的？',
-  'stc-social-network-URL': '包含您的Starcoin的社交网络URL...',
+  'stc-social-network-URL': '您的Starcoin地址（0x开头）...',
   'stc-give-me': '领取',
   'stc-text-01': '这个 STC 水龙头在',
   'stc-text-02': '网络上运行。为了防止恶意行为者耗尽所有可用资金或积累足够的 STC 来发起长期运行的垃圾邮件攻击，请求与常见的 3rd 方社交网络帐户相关联。任何拥有 Twitter 帐户的人都可以在允许的限额内申请资金。',
@@ -15,4 +15,5 @@ export default {
   'stc-text-07': 'STC到帐时间跟请求数量和网络拥堵有关，正常应该在几分钟以内完成，请耐心等候。',
   'stc-create-success': '提交成功，请稍等几分钟后查看你的钱包余额。',
   'stc-create-bad': '请求异常',
+  'stc-add-01': '网络上运行。每个地址(0x开头,长度34字符)在主网余额不为0的前提下，每天只能领取一次。',
 };
