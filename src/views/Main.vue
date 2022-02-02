@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="row" style="margin-top: 10px">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="input-group">
             <input
               id="captcha"
