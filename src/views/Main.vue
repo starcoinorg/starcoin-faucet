@@ -34,9 +34,9 @@
         <div class="col-lg-12">
           <div class="input-group">
             <input
-              id="url"
-              v-model="url"
-              name="url"
+              id="address"
+              v-model="address"
+              name="address"
               type="text"
               class="form-control"
               :placeholder="$t('stc-social-network-URL')"
@@ -208,7 +208,7 @@ export default {
       enabled: networkMap[pNetwork]["enabled"],
       list: [{ transfered_txn: null, timer: 0 }],
       timer: 30,
-      url: "",
+      address: "",
       captcha: '',
       domain: "https://stcscan.io",
       captchaUrl: captchaUrl,
@@ -231,14 +231,12 @@ export default {
       axios
         .post(
           createUrl +
-            `?network=${this.$route.params["network"]}&url=${encodeURI(
-              this.url.trim().split("?")[0]
-            )}&captcha=${this.captcha}`
+            `?network=${this.$route.params["network"]}&address=${this.address.trim()}&captcha=${this.captcha.trim()}`
         )
         .then((resp) => {
           const { status, detail } = resp.data;
           if (status === 0) {
-            this.url = "";
+            this.address = "";
             this.$Message.success(this.$t("stc-create-success"));
           }
         })
@@ -246,7 +244,7 @@ export default {
           console.log(error.response);
           if (error.response) {
             const { detail } = error.response.data;
-            this.url = "";
+            this.address = "";
             this.$Message.error(detail);
           }
         })
