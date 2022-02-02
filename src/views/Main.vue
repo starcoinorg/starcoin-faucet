@@ -9,7 +9,28 @@
           </h1>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="margin-top: 10px">
+        <div class="col-lg-8">
+          <div class="input-group">
+            <input
+              id="captcha"
+              v-model="captcha"
+              name="captcha"
+              type="text"
+              class="form-control"
+              :placeholder="$t('stc-captcha')"
+            >
+            <span class="input-group-btn input-image">
+              <button
+                class="btn btn-default"
+              >
+                <img :src="captchaImageUrl" height="100%" alt="captcha" @click="captchaRefresh">
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px">
         <div class="col-lg-12">
           <div class="input-group">
             <input
@@ -152,9 +173,12 @@
 <script>
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 const apiDomain =
   process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN || "http://localhost:8000";
 const createUrl = `${apiDomain}/create`;
+const captchaUrl = `${apiDomain}/captcha`;
 // const getRecentlyUrl = `${apiDomain}/recently`;
 
 const networkDefault = "barnard";
@@ -185,7 +209,10 @@ export default {
       list: [{ transfered_txn: null, timer: 0 }],
       timer: 30,
       url: "",
+      captcha: '',
       domain: "https://stcscan.io",
+      captchaUrl: captchaUrl,
+      captchaImageUrl: captchaUrl
     };
   },
   computed: {
@@ -194,19 +221,19 @@ export default {
       return networkMap[pNetwork]["disabled"];
     },
   },
-  // mounted() {
-  //   setInterval(() => {
-  //     this.getRecently();
-  //   }, 30 * 1000);
-  // },
+  mounted() {
+  },
   methods: {
+    captchaRefresh() {
+      this.captchaImageUrl = this.captchaUrl +"?"+ Date.now();
+    },
     getCoin() {
       axios
         .post(
           createUrl +
             `?network=${this.$route.params["network"]}&url=${encodeURI(
               this.url.trim().split("?")[0]
-            )}`
+            )}&captcha=${this.captcha}`
         )
         .then((resp) => {
           const { status, detail } = resp.data;
@@ -223,7 +250,9 @@ export default {
             this.$Message.error(detail);
           }
         })
-        .finally((err, resp) => {});
+        .finally((err, resp) => {
+          this.captchaRefresh();
+        });
     },
     // getRecently() {
     //   axios
@@ -282,5 +311,21 @@ export default {
 
 .input-group .form-control {
   min-width: 360px;
+}
+
+.input-image {
+  // padding: 5px;
+  min-width: 100px;
+}
+.form-control {
+  height: 40px;
+
+  
+}
+.btn {
+  width: 150px;
+  margin-left: 5px;
+  height: 40px;
+  padding: 2px 6px;
 }
 </style>

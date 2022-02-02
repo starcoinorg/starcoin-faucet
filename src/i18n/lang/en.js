@@ -16,5 +16,6 @@ export default {
   'stc-create-success': 'Submit successfully. Please check your account balance a few minutes later.',
   'stc-create-bad': 'bad request',
   'stc-add-01': "Network. Only the address that is exists on the Main network, and its balance is greater than zero, can apply once a day.",
+  'stc-captcha': 'Please input image captcha',
 
 };

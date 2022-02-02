@@ -16,4 +16,5 @@ export default {
   'stc-create-success': '提交成功，请稍等几分钟后查看你的钱包余额。',
   'stc-create-bad': '请求异常',
   'stc-add-01': '网络上运行。只有主网存在并且余额大于零的地址才能领取，每天只能领取一次。',
+  'stc-captcha': '请输入图片验证码',
 };
