@@ -226,6 +226,7 @@ export default {
   methods: {
     captchaRefresh() {
       this.captchaImageUrl = this.captchaUrl +"?"+ Date.now();
+      this.captcha = '';
     },
     getCoin() {
       axios
