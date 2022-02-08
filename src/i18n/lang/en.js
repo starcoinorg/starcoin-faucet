@@ -15,7 +15,7 @@ export default {
   'stc-text-07': 'The transfer time of STC is related to the number of requests and the health of the 3rd platform API. Normally, it should be completed within a few minutes. Please wait patiently.',
   'stc-create-success': 'Submit successfully. Please check your account balance a few minutes later.',
   'stc-create-bad': 'bad request',
-  'stc-add-01': "Network. Only the address that is exists on the Main network, and its balance is greater than zero, can apply once a day.",
+  'stc-add-01': "Network. Each address can apply once a day.",
   'stc-captcha': 'Please input image captcha',
 
 };
