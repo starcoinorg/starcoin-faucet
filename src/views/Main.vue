@@ -191,7 +191,7 @@ const networkMap = {
   },
   halley: {
     text: "Halley",
-    disabled: true,
+    disabled: false,
   },
   proxima: {
     text: "Proxima",
