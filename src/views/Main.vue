@@ -176,7 +176,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const apiDomain =
-  process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN || "http://localhost:8000";
+  process.env.VUE_APP_STARCOIN_FAUCET_API_DOMAIN || "http://129.212.208.198";
 const createUrl = `${apiDomain}/create`;
 const captchaUrl = `${apiDomain}/captcha`;
 // const getRecentlyUrl = `${apiDomain}/recently`;
