@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: yarn build
         env:
-          VUE_APP_STARCOIN_FAUCET_API_DOMAIN: ${{ secrets.API_URL }}
+          VUE_APP_STARCOIN_FAUCET_API_DOMAIN: "http://129.212.208.198"
           CI: false
 
       - name: Deploy to S3
